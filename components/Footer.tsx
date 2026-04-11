@@ -1,3 +1,5 @@
+import Logo from '@/components/Logo'
+
 const FOOTER_COLUMNS = [
   {
     title: 'Product',
@@ -21,19 +23,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="10" y="2" width="8" height="24" rx="4" fill="#72A8E8" />
-                <rect x="2" y="10" width="24" height="8" rx="4" fill="#72A8E8" />
-              </svg>
-              <span className="font-display font-semibold text-white text-lg">
-                MediSync
-              </span>
+              <Logo />
             </a>
             <p className="text-text-secondary text-sm mt-3">
               Future-ready health &amp; safety.
@@ -66,10 +56,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-brand/10 mt-12 pt-6 flex justify-between items-center flex-wrap gap-4">
-          <span className="text-text-secondary text-xs">
-            Built with ❤️ for healthier families
-          </span>
+        <div className="border-t border-brand/10 mt-12 pt-6 flex justify-end items-center flex-wrap gap-4">
+          {/*<span className="text-text-secondary text-xs">*/}
+          {/*  Built with ❤️ for healthier families*/}
+          {/*</span>*/}
           <div className="flex items-center gap-3">
             {/* Twitter/X */}
             <a
@@ -96,7 +86,8 @@ export default function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="#"
+              href="https://www.linkedin.com/company/medisyncfit"
+              target="_blank"
               className="w-9 h-9 rounded-xl bg-navy-700 hover:bg-brand/20 flex items-center justify-center transition-colors cursor-pointer"
               aria-label="LinkedIn"
             >
@@ -119,7 +110,8 @@ export default function Footer() {
 
             {/* Instagram */}
             <a
-              href="#"
+              href="https://www.instagram.com/medisyncfit"
+              target="_blank"
               className="w-9 h-9 rounded-xl bg-navy-700 hover:bg-brand/20 flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Instagram"
             >

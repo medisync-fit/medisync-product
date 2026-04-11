@@ -107,7 +107,7 @@ export default function HeroSection() {
                 {WORDS.map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + i * 0.08, ease: 'easeOut' }}
                     className="inline-block mr-[0.25em]"
@@ -157,36 +157,36 @@ export default function HeroSection() {
             </p>
 
             {/* Trust stats with counter animation */}
-            <div className="flex gap-6 mt-10 flex-wrap items-center">
-              {TRUST_STATS.map((stat, i) => {
-                let counterEl: React.ReactNode
-                if (stat.value === '50,000+') {
-                  counterEl = <AnimatedCounter target={50000} suffix="+" />
-                } else if (stat.value === '99.2%') {
-                  counterEl = <AnimatedCounter target={99.2} suffix="%" decimals={1} />
-                } else if (stat.value === '4.8★') {
-                  counterEl = <AnimatedCounter target={4.8} suffix="★" decimals={1} />
-                } else {
-                  counterEl = stat.value
-                }
+            {/*<div className="flex gap-6 mt-10 flex-wrap items-center">*/}
+            {/*  {TRUST_STATS.map((stat, i) => {*/}
+            {/*    let counterEl: React.ReactNode*/}
+            {/*    if (stat.value === '50,000+') {*/}
+            {/*      counterEl = <AnimatedCounter target={50000} suffix="+" />*/}
+            {/*    } else if (stat.value === '99.2%') {*/}
+            {/*      counterEl = <AnimatedCounter target={99.2} suffix="%" decimals={1} />*/}
+            {/*    } else if (stat.value === '4.8★') {*/}
+            {/*      counterEl = <AnimatedCounter target={4.8} suffix="★" decimals={1} />*/}
+            {/*    } else {*/}
+            {/*      counterEl = stat.value*/}
+            {/*    }*/}
 
-                return (
-                  <div key={stat.label} className="flex items-center gap-6">
-                    <div className="flex flex-col">
-                      <span className="text-brand font-display font-bold text-xl">
-                        {counterEl}
-                      </span>
-                      <span className="text-text-secondary text-xs">
-                        {stat.label}
-                      </span>
-                    </div>
-                    {i < TRUST_STATS.length - 1 && (
-                      <div className="hidden sm:block w-px h-8 bg-brand/20" />
-                    )}
-                  </div>
-                )
-              })}
-            </div>
+            {/*    return (*/}
+            {/*      <div key={stat.label} className="flex items-center gap-6">*/}
+            {/*        <div className="flex flex-col">*/}
+            {/*          <span className="text-brand font-display font-bold text-xl">*/}
+            {/*            {counterEl}*/}
+            {/*          </span>*/}
+            {/*          <span className="text-text-secondary text-xs">*/}
+            {/*            {stat.label}*/}
+            {/*          </span>*/}
+            {/*        </div>*/}
+            {/*        {i < TRUST_STATS.length - 1 && (*/}
+            {/*          <div className="hidden sm:block w-px h-8 bg-brand/20" />*/}
+            {/*        )}*/}
+            {/*      </div>*/}
+            {/*    )*/}
+            {/*  })}*/}
+            {/*</div>*/}
           </motion.div>
 
           {/* Right column — phone mockup */}

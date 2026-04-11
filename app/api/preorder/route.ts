@@ -1,13 +1,52 @@
 import { NextResponse } from 'next/server'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { getFirebaseDb } from '@/lib/firebase'
+import { sendPreorderEmails } from '@/lib/mailer'
+
+type PreorderPayload = {
+  mode: 'b2c' | 'b2b'
+  form: Record<string, unknown>
+}
 
 export async function POST(request: Request) {
-  const body = await request.json()
+  try {
+    const body = (await request.json()) as PreorderPayload
 
-  // Log the preorder (replace with DB/email service in production)
-  console.log('📦 New preorder received:', JSON.stringify(body, null, 2))
+    if (!body?.mode || !body?.form || !['b2c', 'b2b'].includes(body.mode)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid preorder payload' },
+        { status: 400 },
+      )
+    }
 
-  // Generate a reference number
-  const ref = `MS-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`
+    const email = String(body.form.email || '')
+    if (!email) {
+      return NextResponse.json(
+        { success: false, error: 'Email is required' },
+        { status: 400 },
+      )
+    }
 
-  return NextResponse.json({ success: true, reference: ref })
+    const db = getFirebaseDb()
+
+    const docRef = await addDoc(collection(db, 'preorders'), {
+      mode: body.mode,
+      form: body.form,
+      createdAt: serverTimestamp(),
+    })
+
+    const reference = docRef.id
+    await sendPreorderEmails({
+      mode: body.mode,
+      reference,
+      form: body.form,
+    })
+
+    return NextResponse.json({ success: true, reference })
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, error: error },
+      { status: 500 },
+    )
+  }
 }

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/constants'
 import PreorderButton from '@/components/PreorderButton'
+import Logo from '@/components/Logo'
 
 export default function Navbar() {
   const [hidden, setHidden] = useState(false)
@@ -72,19 +73,7 @@ export default function Navbar() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: 'backOut' }}
           >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect x="10" y="2" width="8" height="24" rx="4" fill="#72A8E8" />
-              <rect x="2" y="10" width="24" height="8" rx="4" fill="#72A8E8" />
-            </svg>
-            <span className="font-display font-semibold text-white text-lg">
-              MediSync
-            </span>
+            <Logo />
           </motion.a>
 
           {/* Desktop links with staggered reveal + active highlight */}
@@ -113,20 +102,21 @@ export default function Navbar() {
                 )}
               </motion.a>
             ))}
-            <motion.div
+
+          </div>
+          <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.8 }}
               className="flex items-center gap-2"
-            >
-              <span className="bg-accent-green/20 text-accent-green text-[10px] font-bold px-2 py-0.5 rounded-full">
-                EARLY ACCESS
-              </span>
-              <PreorderButton variant="filled" size="sm">
-                Preorder Now
-              </PreorderButton>
-            </motion.div>
-          </div>
+          >
+            {/*<span className="bg-accent-green/20 text-accent-green text-[10px] font-bold px-2 py-0.5 rounded-full">*/}
+            {/*  EARLY ACCESS*/}
+            {/*</span>*/}
+            <PreorderButton variant="filled" size="sm">
+              Preorder Now
+            </PreorderButton>
+          </motion.div>
 
           {/* Mobile menu button */}
           <button

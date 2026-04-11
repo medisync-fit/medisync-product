@@ -3,15 +3,14 @@ import SocialProofBar from '@/components/SocialProofBar'
 import FeaturesSection from '@/components/FeaturesSection'
 import HowItWorks from '@/components/HowItWorks'
 import WearableShowcase from '@/components/WearableShowcase'
-import FallDetectionSpotlight from '@/components/FallDetectionSpotlight'
-import PricingSection from '@/components/PricingSection'
+import PricingSectionNew from '@/components/PricingSectionNew'
 import Testimonials from '@/components/Testimonials'
 import DownloadCTA from '@/components/DownloadCTA'
 import Footer from '@/components/Footer'
 
 function SectionDivider() {
   return (
-    <div className="h-px bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
+      <div className="h-px bg-linear-to-r from-transparent via-brand/20 to-transparent"/>
   )
 }
 
@@ -27,12 +26,13 @@ export default function Home() {
       <SectionDivider />
       <WearableShowcase />
       <SectionDivider />
-      {/* <FallDetectionSpotlight /> */}
+        {/*<FallDetectionSpotlight />*/}
       <SectionDivider />
-      <PricingSection />
+        {/*<PricingSection />*/}
+        <PricingSectionNew/>
       <SectionDivider />
-      <Testimonials />
-      <SectionDivider />
+      {/*<Testimonials />*/}
+      {/*<SectionDivider />*/}
       <DownloadCTA />
       <Footer />
     </main>
